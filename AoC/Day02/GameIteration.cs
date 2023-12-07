@@ -11,17 +11,17 @@
 
         public bool IsPossible(GameConfiguration configuration)
         {
-            foreach (var round in Rounds){
-                switch round {
-                    case round.RedCount > gameConfiguration.MaxRedCount: return false;
-                    case round.RedCount > gameConfiguration.MaxRedCount: return false;
-                    case round.RedCount > gameConfiguration.MaxRedCount: return false;
-                } 
-            }
+            //foreach (var round in Rounds){
+            //    switch round {
+            //        case round.RedCount > gameConfiguration.MaxRedCount: return false;
+            //        case round.RedCount > gameConfiguration.MaxRedCount: return false;
+            //        case round.RedCount > gameConfiguration.MaxRedCount: return false;
+            //    } 
+            //}
             return true; 
         }
 
-    public class GameRound
+    public record GameRound
     {
         public int RedCount { get; set; }
         public int BlueCount { get; set; }

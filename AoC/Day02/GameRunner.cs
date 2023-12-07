@@ -19,8 +19,10 @@ namespace AoC.Day02
             _gameConfiguration = gameConfiguration;
         }
 
-        public bool TryLoadInputFile(string filePath)
+        public bool TryLoadInputFile(string filePath, out GameIteration? gameIteration)
         {
+            gameIteration = null;
+
             // split : for 2 lines then ; for n lines then , for n lines
             try
             {
@@ -51,41 +53,49 @@ namespace AoC.Day02
 
                     foreach (var round in rounds)
                     {
-                        iteration.Rounds.Add(ParseRoundLine(round));
+                        int r = 0, g = 0, b = 0;
+                        var roundItems = round.Split(",");
+                        
+                        foreach (var item in roundItems) 
+                        { 
+                            var parts = item.Trim().Split(' ');
+
+                            switch (parts[1])
+                            {
+                                case "red":
+                                    r += int.Parse(parts[0]);
+                                    break;
+                                case "green":
+                                    g += int.Parse(parts[0]);
+                                    break;
+                                case "blue":
+                                    b += int.Parse(parts[0]);
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+
+                        var gr = new GameIteration.GameRound
+                        {
+                            RedCount = r,
+                            GreenCount = g,
+                            BlueCount = b
+                        };
+
+                        iteration.Rounds.Add(gr);
                     }
+
+                    // Set at the very end, otherwise partial data could be returned instead of null
+                    gameIteration = iteration;
                 }
             } catch (Exception ex) 
             {
                 Console.WriteLine (ex.Message);
+                return false;
             }
 
-            return false;
-        }
-
-        private GameIteration.GameRound ParseRoundLine(string roundLine)
-        {
-            var gr = new GameIteration.GameRound();
-            var items = roundLine.Split(",");
-
-            gr.RedCount = items switch
-            { 
-                [var amount, "red"] => int.Parse(amount),
-                _ => 0
-            };
-
-            gr.BlueCount = items switch
-            {
-                [var amount, "blue"] => int.Parse(amount),
-                _ => 0
-            };
-
-            gr.GreenCount = items switch
-            {
-                [var amount, "green"] => int.Parse(amount),
-                _ => 0
-            };
-
-            return gr;
+            return true;
         }
 
         public int RunSimulation ()

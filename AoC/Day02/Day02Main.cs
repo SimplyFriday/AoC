@@ -27,8 +27,9 @@ namespace AoC.Day02
             }
 
             var gameRunner = new GameRunner(gameConfig);
+            GameIteration? gameIteration; 
 
-            if (gameRunner.TryLoadInputFile(inputFilePath))
+            if (gameRunner.TryLoadInputFile(inputFilePath, out gameIteration))
             {
                 Console.WriteLine($"The result for Day 2 is: {gameRunner.RunSimulation()}");
             }
