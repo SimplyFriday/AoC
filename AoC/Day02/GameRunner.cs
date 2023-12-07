@@ -19,10 +19,8 @@ namespace AoC.Day02
             _gameConfiguration = gameConfiguration;
         }
 
-        public bool TryLoadInputFile(string filePath, out GameIteration? gameIteration)
+        public bool TryLoadInputFile(string filePath)
         {
-            gameIteration = null;
-
             // split : for 2 lines then ; for n lines then , for n lines
             try
             {
@@ -86,8 +84,7 @@ namespace AoC.Day02
                         iteration.Rounds.Add(gr);
                     }
 
-                    // Set at the very end, otherwise partial data could be returned instead of null
-                    gameIteration = iteration;
+                    _iterationList.Add(iteration);
                 }
             } catch (Exception ex) 
             {
