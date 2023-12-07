@@ -17,12 +17,13 @@ namespace AoC.Day02
                 MaxBlueCount = 14
             };
 
-            Console.Write("Enter the game input file location: ");
-            var inputFilePath = Console.ReadLine();
-
+            //Console.Write("Enter the game input file location: ");
+            //var inputFilePath = Console.ReadLine();
+            string inputFilePath = "../../../Day02/2.txt";
             if (string.IsNullOrEmpty(inputFilePath))
             {
                 Console.WriteLine("Invalid path. Press enter to continue:");
+                Console.ReadKey();
                 return;
             }
 
@@ -30,7 +31,8 @@ namespace AoC.Day02
 
             if (gameRunner.TryLoadInputFile(inputFilePath))
             {
-                Console.WriteLine($"The result for Day 2 is: {gameRunner.RunSimulation()}");
+                Console.WriteLine($"The result for Day 2 is: {gameRunner.RunSimulation()}\nPress any key to continue:");
+                Console.ReadKey();
             }
 
         }
