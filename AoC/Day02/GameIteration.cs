@@ -2,9 +2,10 @@
 {
     internal class GameIteration
     {
+        public int GameNumber { get; set; }
         public GameConfiguration gameConfiguration;
         public List<GameRound> Rounds { get; set; } = new List<GameRound>();
-        GameIteration( GameConfiguration configuration){
+        public GameIteration( GameConfiguration configuration){
             gameConfiguration = configuration;
         }
 
