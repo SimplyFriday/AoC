@@ -2,18 +2,25 @@
 {
     internal class GameIteration
     {
+        public GameConfiguration gameConfiguration;
         public List<GameRound> Rounds { get; set; } = new List<GameRound>();
-
-        public bool IsPossible (GameConfiguration configuration)
-        {
-            return false;
+        GameIteration( GameConfiguration configuration){
+            gameConfiguration = configuration;
         }
 
-        public class GameRound
+        public bool IsPossible(GameConfiguration configuration)
         {
-            public int RedCount { get; set; }
-            public int BlueCount { get; set; }
-            public int GreenCount { get; set; }
+            foreach (var round in Rounds){
+
+            }
+            return false; 
         }
+
+    public class GameRound
+    {
+        public int RedCount { get; set; }
+        public int BlueCount { get; set; }
+        public int GreenCount { get; set; }
     }
+}
 }
