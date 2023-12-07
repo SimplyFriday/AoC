@@ -1,18 +1,31 @@
 ﻿using AoC.Day02;
 
-var gameConfig = new GameConfiguration
+
+while (true)
 {
-    MaxRedCount = 12,
-    MaxGreenCount = 13,
-    MaxBlueCount = 14
-};
+    Console.Clear();
+    Console.Write("Enter a number to run or 'x' to exit: ");
 
-// In a real program you'd define this in a config file but idfc
-var inputFilePath = $"{Directory.GetCurrentDirectory()}/Day02/GameInput.txt";
+    var input = Console.ReadLine()?.ToLower()?.Trim() ?? "x";
 
-var gameRunner = new GameRunner(gameConfig);
+    if (input == "x")
+    {
+        return;
+    }
+    else
+    {
+        int dayToRun;
+        
+        if (int.TryParse(input, out dayToRun))
+        {
+            switch (dayToRun)
+            {
+                case 2:
+                    new Day02Main().Run();
+                    break;
 
-if (gameRunner.TryLoadInputFile(inputFilePath))
-{
-    Console.WriteLine($"The result for Day 2 is: {gameRunner.RunSimulation()}");
+                default: break;
+            }
+        }
+    }
 }
