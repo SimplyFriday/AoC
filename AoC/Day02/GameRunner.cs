@@ -36,9 +36,9 @@ namespace AoC.Day02
                     }
 
                     int gameNum;
-                    if (!int.TryParse(
-                            game[0].Replace("Game", "").Trim(), 
-                            out gameNum))
+                    var gnString = game[0].Replace("Game", "").Trim();
+
+                    if (!int.TryParse(gnString, out gameNum))
                     {
                         return false;
                     }
