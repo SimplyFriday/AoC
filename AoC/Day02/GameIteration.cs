@@ -11,9 +11,13 @@
         public bool IsPossible(GameConfiguration configuration)
         {
             foreach (var round in Rounds){
-
+                switch round {
+                    case round.RedCount > gameConfiguration.MaxRedCount: return false;
+                    case round.RedCount > gameConfiguration.MaxRedCount: return false;
+                    case round.RedCount > gameConfiguration.MaxRedCount: return false;
+                } 
             }
-            return false; 
+            return true; 
         }
 
     public class GameRound
