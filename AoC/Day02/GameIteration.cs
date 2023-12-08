@@ -25,27 +25,27 @@
         }
 
         public int powerOfLowestPossible() {
-            GameRound lowestCounts = new GameRound
+            GameRound highestCounts = new GameRound
             {
-                RedCount = int.MaxValue,
-                BlueCount = int.MaxValue,
-                GreenCount = int.MaxValue
+                RedCount = 0,
+                BlueCount = 0,
+                GreenCount = 0
             };
 
             foreach (GameRound round in Rounds)
             {
-                lowestCounts.RedCount = round.RedCount < lowestCounts.RedCount ?
-                                        round.RedCount : lowestCounts.RedCount;
+                highestCounts.RedCount = round.RedCount > highestCounts.RedCount ?
+                                        round.RedCount : highestCounts.RedCount;
 
-                lowestCounts.BlueCount = round.BlueCount < lowestCounts.BlueCount ?
-                                         round.BlueCount : lowestCounts.BlueCount;
+                highestCounts.BlueCount = round.BlueCount > highestCounts.BlueCount ?
+                                         round.BlueCount : highestCounts.BlueCount;
 
-                lowestCounts.GreenCount = round.GreenCount < lowestCounts.GreenCount ?
-                                          round.GreenCount : lowestCounts.GreenCount;
+                highestCounts.GreenCount = round.GreenCount > highestCounts.GreenCount ?
+                                          round.GreenCount : highestCounts.GreenCount;
             }
 
             //called power bc thats what the puzzle called it
-            int power = lowestCounts.RedCount * lowestCounts.BlueCount * lowestCounts.GreenCount;
+            int power = highestCounts.RedCount * highestCounts.BlueCount * highestCounts.GreenCount;
             return power;
         }
         

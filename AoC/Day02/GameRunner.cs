@@ -102,10 +102,11 @@ namespace AoC.Day02
             int simulationTotal = 0;
             foreach (var itter in _iterationList)
             {
-                if (itter.IsPossible())
-                {
-                    simulationTotal += itter.GameNumber;
-                }
+                //if (itter.IsPossible())
+                //{
+                //    simulationTotal += itter.GameNumber;
+                //}
+                simulationTotal += itter.powerOfLowestPossible();
             }
             return simulationTotal;
         }
